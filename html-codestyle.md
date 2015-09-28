@@ -35,7 +35,7 @@
     <!-- Плохо -->
     <ul>
         <li> Cats </li>
-        </li> <strong>Not cats</strong></li>
+        <li> <strong>Not cats</strong></li>
     </ul>
     <abbr  title = "Health Points">HP</abbr>
 
@@ -43,7 +43,7 @@
     <!-- Хорошо -->
     <ul>
         <li>Cats</li>
-        </li><strong>Not cats</strong></li>
+        <li><strong>Not cats</strong></li>
     </ul>
     <abbr title="Health Points">HP</abbr>
     ```
