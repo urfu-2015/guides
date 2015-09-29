@@ -3,10 +3,7 @@
 - [Как сделать pull request в windows](how-to-pull-request.md#Как-сделать-pull-request-в-windows)
 - [Как сделать pull request в linux](how-to-pull-request.md#Как-сделать-pull-request-в-linux)
 - [Как сделать pull request в windows, используя git shell](how-to-pull-request.md#Как-сделать-pull-request-в-windows-используя-git-shell)
-
-### Полезные ссылки
-
-- Можно самостоятельно пройти курс на [GitHowTo](http://githowto.com/ru/setup)
+- [Полезные ссылки](how-to-pull-request.md#Полезные-ссылки)
 
 ### Как сделать pull request в windows
 
@@ -148,3 +145,7 @@ git push
 После установки приложения, в систему установится **git shell**. Запускаем его.
 
 Далее смотрим [как сделать pull request в linux](how-to-pull-request.md#Как-сделать-pull-request-в-linux)
+
+### Полезные ссылки
+
+- Можно самостоятельно пройти курс по основам Git на [GitHowTo](http://githowto.com/ru/setup)
