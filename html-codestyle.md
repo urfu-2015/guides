@@ -17,7 +17,7 @@
     <ul>
         <li>Cats</li>
 
-        </li>Not cats</li>
+        <li>Not cats</li>
     </ul>
 
     <!-- Хорошо -->
@@ -25,7 +25,7 @@
     <p>Ещё один</p>
     <ul>
         <li>Cats</li>
-        </li>Not cats</li>
+        <li>Not cats</li>
     </ul>
     ```
 
