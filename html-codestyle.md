@@ -77,16 +77,25 @@
 * Пишем теги строчными буквами:
 
     ``` html
+    <!-- Плохо -->
+    <TITLE>Яндекс.Блог</tItLe>
+
     <!-- Хорошо -->
     <title>Яндекс.Блог</title>
 
-    <!-- Плохо -->
-    <TITLE>Яндекс.Блог</tItLe>
     ```
 
 * Void elements (одиночные) теги не закрываем, normal elements (парные) **закрываем всегда**:
 
     ``` html
+    <!-- Плохо -->
+    <img src="cats.jpeg" />
+    <meta charset="utf-8"/>
+    <ul>
+        <li>Cats
+        <li>Not cats
+    </ul>
+
     <!-- Хорошо -->
     <img src="cats.jpeg">
     <meta charset="utf-8">
@@ -95,47 +104,39 @@
         <li>Cats</li>
         <li>Not cats</li>
     </ul>
-
-    <!-- Плохо -->
-    <img src="cats.jpeg" />
-    <meta charset="utf-8"/>
-    <ul>
-        <li>Cats
-        <li>Not cats
-    </ul>
     ```
 
 * Пишем атрибуты строчными буквами:
 
     ``` html
-    <!-- Хорошо -->
-    <abbr title="Health Points">HP</abbr>
-
     <!-- Плохо -->
     <abbr TITLE="Hell Points">HP</abbr>
+
+    <!-- Хорошо -->
+    <abbr title="Health Points">HP</abbr>
     ```  
 
 * Одиночные атрибуты пишем без значений, а остальные со значениями **в двойных кавычках**:
 
     ``` html
-    <!-- Хорошо -->
-    <input type="button" disabled>
-
     <!-- Плохо -->
     <input type=button disabled>
     <input type="button" disabled="">
     <input type="button" disabled="disabled">
     <input type='button' disabled>
+
+    <!-- Хорошо -->
+    <input type="button" disabled>
     ```  
 
 * Зарезервированные значения атрибутов пишем строчными буквами:
 
     ``` html
-    <!-- Хорошо -->
-    <input type="button">
-
     <!-- Плохо -->
     <input type="BUTTON">
+
+    <!-- Хорошо -->
+    <input type="button">
     ```
 
 ### Обязательные элементы и атрибуты
@@ -148,6 +149,7 @@
     - `<body>`
     - `<title>`
     - `<meta charset="utf-8">`
+    <br>
     <br>
 
     ``` html
@@ -168,18 +170,19 @@
 
 ### Запрещённые элементы и атрибуты
 
-* Устаревшие элементы: `<center>`, `<font>`, `<marquee>`, и другие
-* Элементы визуальной разметки: `<b>`, `<u>`, `<i>`, `<s>`, и другие
-* Устаревшие атрибуты: `border` для таблиц, `align`,  и другие
+* Устаревшие элементы: `<center>`, `<font>`, `<marquee>` и другие
+* Элементы визуальной разметки: `<b>`, `<u>`, `<i>`, `<s>` и другие
+* Устаревшие атрибуты: `border` для таблиц, `type` для списков,
+  `align` для выравнивания и другие
 
 ### Экранирование символов
 
 * В тексте элементов всегда заменяем символы `<` и `>` на `&lt;` и `&gt;`
 
     ``` html
-    <!-- Хорошо -->
-    <div>Текст с &lt;угловыми&gt; скобками</div>
-
     <!-- Плохо -->
     <div>Текст с <угловыми> скобками</div>
+
+    <!-- Хорошо -->
+    <div>Текст с &lt;угловыми&gt; скобками</div>
     ```
