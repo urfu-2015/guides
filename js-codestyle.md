@@ -7,7 +7,7 @@
   __Плохо:__
   ``` javascript
   var students_count;         // В качестве разделителя используется `_`
-  var Language;	              // Первая буква - прописная
+  var Language;               // Первая буква - прописная
   const MILLISECONDS_IN_DAY;  // Если константа объявляется через `const` пишем в `camelCase`
   ```
 
@@ -58,7 +58,7 @@
   ``` javascript
   var idx;
   var btn;
-  var dateOfFurstPublicationForCurrentPost;
+  var dateOfFirstPublicationForCurrentPost;
   ```
 
   __Хорошо:__
