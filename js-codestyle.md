@@ -74,7 +74,7 @@
   var comments = ...;
   var overalRaiting = 0;
 
-  for(var i = 0; i < comments.length; i++) { 
+  for (var i = 0; i < comments.length; i++) { 
       overalRaiting += comments[i].raiting;
   }
 
@@ -86,7 +86,7 @@
   var comments = ...;
   var overalRaiting = 0;
 
-  for(var i = 0; i < comments.length; i++) { 
+  for (var i = 0; i < comments.length; i++) { 
       overalRaiting += comments[i].raiting;
   }
 
