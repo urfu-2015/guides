@@ -4,3 +4,4 @@
 - [Требования к оформлению HTML](html-codestyle.md)
 - [Требования к оформлению CSS](css-codestyle.md)
 - [Требования к оформлению JS](js-codestyle.md)
+- [Про editorconfig](editorconfig.md)
