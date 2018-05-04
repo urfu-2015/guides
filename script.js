@@ -134,19 +134,14 @@ function fun() {
 // console.log(fun())
 
 // Task7
-
-class DOMINIT {
+class parent{
     constructor(options){
-
-        this.ctrl = options.ctrl;
-        this.shift = options.shift;
         this.parentElement = options.parentElement;
         this.arrOfItems = options.arrOfItems;
-        this.onCreate = options.onCreate;
-        this.onDelete = options.onDelete;
+
+        this.container = document.createElement('div');
 
         this.id = 1;
-        this.container = document.createElement('div');
     }
     init(){
         this.container.classList.add('container');
@@ -156,17 +151,17 @@ class DOMINIT {
         document.body.insertAdjacentElement("afterbegin", this.container);
         this.createCard()
     }
-    createCard(){
 
+    createCard(){
         this.card = document.createElement('div');
-        this.card.classList.add('col-6');
+        this.card.classList.add('col-md-6');
         this.card.classList.add('card');
         let header = document.createElement('div');
         header.innerHTML = '<div class="card-header d-flex justify-content-center align-items-center"><h2 class="card-title text-for-edit">list</h2> </div>'
-        this.card.appendChild(header)
+        this.card.appendChild(header);
         let body = document.createElement('div');
-        body.innerHTML = '<div class="card-body"> ' +
-            '<div class="block-extend-item-list d-flex justify-content-between align-items-center"><input class="new-items" placeholder="here can be your addition"><span class="add-new-item"><i class="fas fa-plus"></i></span> <span class="remove-item d-none"><i class="fas fa-minus"></i></span></div> </div>'
+        body.innerHTML = '<div class="card-body"> </div>';
+
         this.card.appendChild(body);
 
         this.list = document.createElement(this.parentElement);
@@ -179,12 +174,42 @@ class DOMINIT {
             this.buildLI(this.arrOfItems[i])
         }
 
+    }
+    buildLI(inputContent) {
+        this.list = document.querySelector('.to-do-list');
+        this.newLi = document.createElement('li');
+        this.newLi.classList.add('list-item');
+        this.newLi.id = this.id;
+        this.newLi.innerHTML = ` <span class="content"> ${inputContent} </span>`;
+        this.list.appendChild(this.newLi);
+
+        this.id++;
+    }
+}
+
+
+class DOMINIT extends  parent{
+    constructor(options){
+        super(options);
+
+        this.ctrl = options.ctrl;
+        this.shift = options.shift;
+        this.onCreate = options.onCreate;
+        this.onDelete = options.onDelete;
+    }
+    initChild(){
+        this.init();
+
         this.addNewTask();
         this.removeItem();
-
-
     }
+
     addNewTask(){
+        let footer = document.createElement('div');
+        footer.classList.add('card-footer')
+        footer.innerHTML = '<div class="block-extend-item-list d-flex justify-content-between align-items-center"><input class="new-items" placeholder="here can be your addition"><span class="add-new-item"><i class="fas fa-plus"></i></span>  <span class="remove-item d-none"><i class="fas fa-minus"></i></span></div>'
+        this.card.appendChild(footer);
+
         this.parentBlock = document.querySelector('.block-extend-item-list');
         this.addBtn = this.parentBlock.querySelector('.add-new-item');
         this.addBtn.addEventListener('click', () => {
@@ -196,65 +221,62 @@ class DOMINIT {
         })
     }
 
-     buildLI(inputContent){
-        let list = document.querySelector('.to-do-list');
-        let newLi = document.createElement('li');
-        newLi.classList.add('list-item');
-        newLi.id = this.id;
-        newLi.innerHTML = ` <span class="content"> ${inputContent} </span>`;
-        list.appendChild(newLi);
+    buildLI(inputContent){
+
+        super.buildLI(inputContent);
 
         this.clickAm = 0;
 
-         newLi.addEventListener('click', (e) => {
-             let targetLi = e.target.closest('li'),
-                 removeItemBtn = document.querySelector('.remove-item'),
-                 allLi = list.children;
+        this.newLi.addEventListener('click', (e) => {
 
-             if (!(this.ctrl) || ((this.ctrl) && (!event.ctrlKey))){
-                 for(let i = 0; i < allLi.length; i++){
-                     allLi[i].classList.remove('active')
-                 }
-             }
-             targetLi.classList.toggle('active');
+            let targetLi = e.target.closest('li'),
+                removeItemBtn = document.querySelector('.remove-item'),
+                allLi = this.list.children;
 
-             if ((this.shift) && (event.shiftKey)){
+            if (!(this.ctrl) || ((this.ctrl) && (!event.ctrlKey))){
+                for(let i = 0; i < allLi.length; i++){
+                    allLi[i].classList.remove('active')
+                }
+            }
+            targetLi.classList.toggle('active');
 
-                 if (!(this.clickAm%2)) {
-                     this.firstPicked = targetLi.id
-                 }else{
-                     this.secondPicked = targetLi.id;
+            if ((this.shift) && (event.shiftKey)){
 
-                     if(this.firstPicked > this.secondPicked){
+                if (!(this.clickAm%2)) {
+                    this.firstPicked = targetLi.id
+                }else{
+                    this.secondPicked = targetLi.id;
 
-                         for(let i = this.secondPicked; i <= this.firstPicked; i++) {
-                             let element = document.getElementById(i);
-                             if (element){
-                                 element.classList.add('active')
-                             }
-                         }
-                     }else {
+                    if(this.firstPicked > this.secondPicked){
 
-                         for(let i = this.firstPicked; i <= this.secondPicked; i++) {
-                             let element = document.getElementById(i)
-                             if (element){
-                                 element.classList.add('active')
-                             }
-                         }
-                     }
-                 }
-                 this.clickAm++;
-             }
-             let containAct = [].slice.call(allLi).some( (li) => li.classList.contains('active'));
+                        for(let i = this.secondPicked; i <= this.firstPicked; i++) {
+                            let element = document.getElementById(i);
+                            if (element){
+                                element.classList.add('active')
+                            }
+                        }
+                    }else {
 
-             if (containAct){
-                 removeItemBtn.classList.remove('d-none');
-             }else{
-                 removeItemBtn.classList.add('d-none');
-             }
-         })
-         this.id++;
-    }
+                        for(let i = this.firstPicked; i <= this.secondPicked; i++) {
+                            let element = document.getElementById(i);
+                            if (element){
+                                element.classList.add('active')
+                            }
+                        }
+                    }
+                }
+                this.clickAm++;
+            }
+            let containAct = [].slice.call(allLi).some( (li) => li.classList.contains('active'));
+
+            if (containAct){
+                removeItemBtn.classList.remove('d-none');
+            }else{
+                removeItemBtn.classList.add('d-none');
+            }
+        })
+
+   }
 
     removeItem(){
         let removeItemBtn = document.querySelector('.remove-item');
@@ -272,7 +294,6 @@ class DOMINIT {
         });
     }
 }
-
 
 const options = {
         ctrl: false, // если true - позволить выбор нескольких элементов списка с нажатой кнопкой ctrl
@@ -293,10 +314,11 @@ function onDelete(){
     alert('items removed')
 }
 
-
+let initialParent = new parent(options);
+console.log(initialParent.init());
 
 let initialList = new DOMINIT(options);
-console.log(initialList.init());
+console.log(initialList.initChild());
 
 
 
